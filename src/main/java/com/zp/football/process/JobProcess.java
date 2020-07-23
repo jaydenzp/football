@@ -1,9 +1,13 @@
 package com.zp.football.process;
 
 
+import com.zp.football.domain.Game;
+import com.zp.football.service.GameService;
+import com.zp.football.utis.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -16,6 +20,9 @@ import java.util.List;
 
 @Component
 public class JobProcess implements PageProcessor {
+
+    @Autowired
+    private GameService gameService;
 
 
     @Override
@@ -52,6 +59,21 @@ public class JobProcess implements PageProcessor {
             String halfCourt = selectable.$("td:eq(7)","text").get();
             //分析url
             String analysisUrl = selectable.$("td:eq(8)").links().get();
+
+            Game game = new Game();
+            game.setGameId(gameId);
+            game.setGameName(gameName);
+            game.setGameTime(gameTime);
+            game.setStatus(status);
+            game.setHomeTeam(homeTeam);
+            game.setHomeTeamUrl(homeTeamUrl);
+            game.setHomeTeamScore(StringUtils.myparseInt(score1));
+            game.setVisitingTeamScore(StringUtils.myparseInt(score2));
+            game.setVisitingTeam(visitingTeam);
+            game.setVisitingTeamUrl(visitingTeamUrl);
+            game.setHalfScore(halfCourt);
+            Game game1 = gameService.create(game);
+            System.out.println(game1);
         }
     }
 

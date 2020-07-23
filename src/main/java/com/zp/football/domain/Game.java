@@ -12,6 +12,10 @@ public class Game {
     private Long id;
     //比赛id
     private String gameId;
+    //比赛名称
+    private String gameName;
+    //比赛时间
+    private String gameTime;
     //主队名称
     private String homeTeam;
     //主队跳转url
@@ -28,6 +32,9 @@ public class Game {
     private String halfScore;
     //状态
     private String status;
+    //状态 分析url
+    private String analysisUrl;
+
     //是否是胜负彩
     private boolean isSportsWinOrLose;
     //是否体彩
@@ -54,6 +61,22 @@ public class Game {
 
     public void setGameId(String gameId) {
         this.gameId = gameId;
+    }
+
+    public String getGameName() {
+        return gameName;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
+
+    public String getGameTime() {
+        return gameTime;
+    }
+
+    public void setGameTime(String gameTime) {
+        this.gameTime = gameTime;
     }
 
     public String getHomeTeam() {
@@ -160,11 +183,21 @@ public class Game {
         this.pWinOrLose = pWinOrLose;
     }
 
+    public String getAnalysisUrl() {
+        return analysisUrl;
+    }
+
+    public void setAnalysisUrl(String analysisUrl) {
+        this.analysisUrl = analysisUrl;
+    }
+
     @Override
     public String toString() {
         return "Game{" +
                 "id=" + id +
                 ", gameId='" + gameId + '\'' +
+                ", gameName='" + gameName + '\'' +
+                ", gameTime='" + gameTime + '\'' +
                 ", homeTeam='" + homeTeam + '\'' +
                 ", homeTeamUrl='" + homeTeamUrl + '\'' +
                 ", homeTeamScore=" + homeTeamScore +
@@ -173,6 +206,7 @@ public class Game {
                 ", visitingTeamScore=" + visitingTeamScore +
                 ", halfScore='" + halfScore + '\'' +
                 ", status='" + status + '\'' +
+                ", analysisUrl='" + analysisUrl + '\'' +
                 ", isSportsWinOrLose=" + isSportsWinOrLose +
                 ", isSports=" + isSports +
                 ", pHomeTeamScore=" + pHomeTeamScore +
