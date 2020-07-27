@@ -13,7 +13,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
  * @Date: 2020/7/23 16:10
  */
 @Component
-public class SpringDataPipeline implements Pipeline {
+public class DataProcessPipeline implements Pipeline {
 
     @Autowired
     private GameService gameService;

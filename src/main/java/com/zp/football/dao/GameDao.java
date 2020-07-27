@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Author: zhanpeng
  * @Date: 2020/7/22 11:00
  */
-public interface GameDao extends BaseDao<Game> {
+public interface GameDao extends  BaseDao<Game>{
 }

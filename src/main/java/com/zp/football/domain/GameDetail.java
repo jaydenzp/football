@@ -6,10 +6,11 @@ import javax.persistence.*;
 @Table(name = "game_detail")
 public class GameDetail {
     //主键
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;*/
     //比赛id
+    @Id
     private String gameId;
     //主队名称
     private String homeTeam;
@@ -56,13 +57,6 @@ public class GameDetail {
     //客队联赛平均失球
     private int visitingTeamConcededAverage;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getGameId() {
         return gameId;
@@ -267,7 +261,6 @@ public class GameDetail {
     @Override
     public String toString() {
         return "GameDetail{" +
-                "id=" + id +
                 ", gameId='" + gameId + '\'' +
                 ", homeTeam='" + homeTeam + '\'' +
                 ", homeTeamWinScore=" + homeTeamWinScore +

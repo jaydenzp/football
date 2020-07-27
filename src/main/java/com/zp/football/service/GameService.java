@@ -15,8 +15,6 @@ public interface GameService extends BaseService<Game> {
 
     List<Game> findAll(Game game);
 
-    Game findById(Long id);
-
-    //Game findByGameId(String id);
+    Game findById(String id);
 
 }

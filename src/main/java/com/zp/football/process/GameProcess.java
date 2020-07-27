@@ -1,7 +1,7 @@
 package com.zp.football.process;
 
 import com.zp.football.domain.Game;
-import com.zp.football.pipeline.SpringDataPipeline;
+import com.zp.football.pipeline.DataProcessPipeline;
 import com.zp.football.utis.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,7 +24,7 @@ import java.util.List;
 public class GameProcess implements PageProcessor {
 
     @Autowired
-    private SpringDataPipeline springDataPipeline;
+    private DataProcessPipeline dataProcessPipeline;
 
 
     private String url = "http://live.500.com/wanchang.php?e=";
@@ -41,11 +41,21 @@ public class GameProcess implements PageProcessor {
 
     @Override
     public void process(Page page) {
+
         //获取页面数据
-        List<Selectable> nodes = page.getHtml().$("div#resultList div.el").nodes();
+        page.getUrl();
+
+
+        //获取比赛详细信息
+
+
+        //获取球员详细信息
+
+
+        //添加url
 
         //判断nodes是否为空
-        if (nodes.isEmpty()) {
+        /*if (nodes.isEmpty()) {
             try {
                 //如果为空，表示这是招聘信息详情页保存信息详情
                 this.saveJobInfo(page);
@@ -67,7 +77,7 @@ public class GameProcess implements PageProcessor {
                 page.addTargetRequests(listUrl);
 
             }
-        }
+        }*/
     }
     @Scheduled(initialDelay = 1000, fixedDelay = 1000 * 100)
     public void process() {
@@ -75,7 +85,7 @@ public class GameProcess implements PageProcessor {
         String newUrl = url+date;
         Spider.create(new GameProcess())
                 .addUrl(newUrl)
-                .addPipeline(this.springDataPipeline)
+                .addPipeline(this.dataProcessPipeline)
                 .setScheduler(new QueueScheduler()
                         .setDuplicateRemover(new BloomFilterDuplicateRemover(10000000)))
                 .thread(5)

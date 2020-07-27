@@ -20,7 +20,7 @@ public class TestController {
 
     @RequestMapping(value = "run")
     public void runSpider(){
-        String url = "http://live.500.com/wanchang.php?e=2014-01-01";
+        String url = "http://odds.500.com/fenxi/shuju-424798.shtml";
         Spider.create(jobProcess)
                 .addUrl(url)
                 .thread(5)

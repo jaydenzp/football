@@ -14,5 +14,5 @@ public interface BaseService<T> {
 
     List<T> findAll(T game);
 
-    T findById(Long id);
+    T findById(String id);
 }

@@ -7,10 +7,11 @@ import java.util.Date;
 @Table(name = "game")
 public class Game {
     //主键
-    @Id
+   /* @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;*/
     //比赛id
+    @Id
     private String gameId;
     //比赛名称
     private String gameName;
@@ -46,14 +47,6 @@ public class Game {
     //预测胜负平
     private String pWinOrLose;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getGameId() {
         return gameId;
@@ -194,7 +187,6 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "id=" + id +
                 ", gameId='" + gameId + '\'' +
                 ", gameName='" + gameName + '\'' +
                 ", gameTime='" + gameTime + '\'' +

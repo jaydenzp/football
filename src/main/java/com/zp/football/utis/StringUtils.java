@@ -1438,10 +1438,56 @@ public class StringUtils {
         return true;
     }
 
+    /**
+     * 返回url参数的最后一个参数
+     * @param url
+     * @return
+     */
+
+    public static String getEndOfUrlParams(String url){
+        String[] split = url.split("=");
+        return  split[split.length-1];
+    }
+
+    public static String getEndOfNumParams(String url){
+        String[] split = url.split("-");
+        String s = split[split.length - 1];
+        return s.split("\\.")[0];
+    }
+
+    public static String getPrefixNumberText(String str){
+        assert isNullorBlank(str);
+        Pattern pattern = Pattern.compile("[^\\d]+([\\d]+)[^\\d]+.*");
+        Matcher isNum = pattern.matcher(str);
+        boolean b = isNum.find();
+        String num = null;
+        if(b) {
+            num = isNum.group(1);
+        }
+        return num;
+    }
+
+
+
     public static void main(String [] args){
-        String ss = "&amp;";
-        System.out.println(str2TextXML(ss));
+        String s1 = getPrefixNumberText("双方近次交战，横滨，进10球，失6球，大球3次，小球3次");
+        String s = "双方近次交战，横滨，进10球，失6球，大球3次，小球3次";
+        String[] split = s.split("，");
+        Pattern pattern = Pattern.compile("[^\\d]+([\\d]+)[^\\d]+.*");
+        Matcher isNum = pattern.matcher(split[split.length-1]);
+        boolean b = isNum.find();
+        if(b) {
+            String group = isNum.group(1);
+            System.out.println(group);
+        }
+        String content = "双方近次交战740981双方近次交战30双方近次交战";
+        Pattern p = Pattern.compile("[^\\d]+([\\d]+)[^\\d]+.*");
+        Matcher m = p.matcher(content);
+        boolean result = m.find();
+        String find_result = null;
+        if (result) {
+            find_result = m.group(1);
+        }
+        System.out.println(find_result);
     }
 }
-
-

@@ -6,10 +6,11 @@ import javax.persistence.*;
 @Table(name = "team")
 public class Team {
     //主键
-    @Id
+/*    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;*/
     //球队id
+    @Id
     private String teamId;
     //号码
     private String teamNumber;
@@ -37,14 +38,6 @@ public class Team {
     private int numberOfRedCards;
     //身价
     private int worth;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTeamId() {
         return teamId;
@@ -161,7 +154,6 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "id=" + id +
                 ", teamId='" + teamId + '\'' +
                 ", teamNumber='" + teamNumber + '\'' +
                 ", playerName='" + playerName + '\'' +
