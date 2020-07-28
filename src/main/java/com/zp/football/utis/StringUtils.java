@@ -1470,7 +1470,12 @@ public class StringUtils {
 
 
     public static void main(String [] args){
-        String s1 = getPrefixNumberText("双方近次交战，横滨，进10球，失6球，大球3次，小球3次");
+
+        String url = "https://liansai.500.com/team/4285/teamlineup";
+        String[] split1 = url.split("/");
+        String s2 = split1[split1.length - 2];
+        System.out.println(s2);
+        /*String s1 = getPrefixNumberText("双方近次交战，横滨，进10球，失6球，大球3次，小球3次");
         String s = "双方近次交战，横滨，进10球，失6球，大球3次，小球3次";
         String[] split = s.split("，");
         Pattern pattern = Pattern.compile("[^\\d]+([\\d]+)[^\\d]+.*");
@@ -1488,6 +1493,6 @@ public class StringUtils {
         if (result) {
             find_result = m.group(1);
         }
-        System.out.println(find_result);
+        System.out.println(find_result);*/
     }
 }

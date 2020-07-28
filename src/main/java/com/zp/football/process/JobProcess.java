@@ -28,7 +28,8 @@ public class JobProcess implements PageProcessor {
     @Override
     public void process(Page page) {
         //getGameData(page);
-        getGameDetailData(page);
+        //getGameDetailData(page);
+        getTeamPlayer(page);
     }
 
     //设置
@@ -211,5 +212,54 @@ public class JobProcess implements PageProcessor {
      }
 
     //获取球员数据
+    public void getTeamPlayer(Page page) {
+        List<Selectable> nodes = page.getHtml().$("body > div.lwrap > div > div > div.lcontent_full > div").nodes();;
+        List<Selectable> trs = nodes.get(0).$("tr").nodes();
+        //球队id
+        //*[@id="link125"]
+        String url = page.getHtml().$("body > div.lwrap > div > div > div.lsnav_qdnav.clearfix > ul > li.on").links().get();
+        if(StringUtils.isNullorBlank(url)){
+           return;
+        }else {
+            String[] split1 = url.split("/");
+            String teamId = split1[split1.length - 2];
+        }
+
+        for (Selectable selectable: trs
+                ) {
+            //去掉第一个tr，第一个tr是表头信息
+            String text = selectable.$("td:eq(1)", "text").get();
+            if(text!=null && text.length()>0){
+                //号码
+                String teamNum = selectable.$("td:eq(1)", "text").get();
+                //球员名
+                String name = selectable.$("td:eq(3)>span>a","text").get();
+                //位置
+                String position = selectable.$("td:eq(4)","text").get();
+                //年龄
+                String age = selectable.$("td:eq(5)","text").get();
+                //身高
+                String high = selectable.$("td:eq(6)","text").get();
+                //体重
+                String weight = selectable.$("td:eq(7)","text").get();
+                //出场次数
+                String appearance = selectable.$("td:eq(8)>span","text").get();
+                //出场时间
+                String appearanceTime = selectable.$("td:eq(9)>span","text").get();
+                //进球
+                String goals = selectable.$("td:eq(10)","text").get();
+                //助攻
+                String assists = selectable.$("td:eq(11)","text").get();
+                //黄牌
+                String yellow = selectable.$("td:eq(12)","text").get();
+                //红牌
+                String red = selectable.$("td:eq(13)","text").get();
+                //身价
+                String worth = selectable.$("td:eq(14)>span:eq(0)","text").get();
+            }
+        }
+
+    }
+    
 }
 
