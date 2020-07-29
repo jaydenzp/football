@@ -14,5 +14,5 @@ public interface TeamService {
 
     List<Team> findGames(Team team);
 
-    Team findById(Long id);
+    Team findById(String id);
 }

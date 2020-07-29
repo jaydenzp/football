@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class BaseServiceImpl<T> implements BaseService<T> {
 
-    @Autowired
+
     private BaseDao<T> baseDao;
 
 

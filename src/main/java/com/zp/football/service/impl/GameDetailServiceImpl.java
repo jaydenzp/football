@@ -1,5 +1,6 @@
 package com.zp.football.service.impl;
 
+import com.zp.football.dao.GameDao;
 import com.zp.football.dao.GameDetailDao;
 import com.zp.football.domain.GameDetail;
 import com.zp.football.domain.Team;
@@ -15,32 +16,25 @@ import java.util.List;
  * @Author: zhanpeng
  * @Date: 2020/7/23 11:02
  */
-public class GameDetailServiceImpl extends BaseServiceImpl<GameDetail> implements GameDetailService  {
+public class GameDetailServiceImpl implements GameDetailService  {
 
-  /*  @Autowired
+    @Autowired
     private GameDetailDao gameDetailDao;
 
     @Override
-    @Transactional
     public GameDetail create(GameDetail gameDetail) {
-        //先从数据库查询数据
-        GameDetail gameDetail2 = new GameDetail();
-        gameDetail2.setGameId(gameDetail.getGameId());
-        List<Team> gameDetails = this.findGameDetails(gameDetail);
-        if(gameDetails.size()==0) {
-            return gameDetailDao.saveAndFlush(gameDetail);
-        }
-        return  null;
+
+        return gameDetailDao.saveAndFlush(gameDetail);
     }
 
     @Override
-    public List<Team> findGameDetails(GameDetail gameDetail) {
+    public List<GameDetail> findAll(GameDetail gameDetail) {
         Example example = Example.of(gameDetail);
         return gameDetailDao.findAll(example);
     }
 
     @Override
-    public GameDetail findById(Long id) {
+    public GameDetail findById(String id) {
         return gameDetailDao.getOne(id);
-    }*/
+    }
 }
