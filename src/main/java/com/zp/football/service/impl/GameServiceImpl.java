@@ -8,7 +8,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @Author: zhanpeng
@@ -33,5 +32,10 @@ public class GameServiceImpl implements GameService  {
     @Override
     public Game findById(String id) {
         return gameDao.getOne(id);
+    }
+
+    @Override
+    public List<Game> saveAll(List<Game> games){
+        return gameDao.saveAll(games);
     }
 }

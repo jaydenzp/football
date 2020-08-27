@@ -3,14 +3,16 @@ package com.zp.football.domain;
 import javax.persistence.*;
 import java.util.Date;
 
+
+/**
+ * , indexes = {
+ *         @Index(name = "i_game_name",  columnList="gameName"),
+ *         @Index(name = "i_home_team",  columnList="homeTeam"),
+ *         @Index(name = "i_visiting_team",  columnList="visitingTeam")}
+ */
 @Entity
 @Table(name = "game")
 public class Game {
-    //主键
-   /* @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;*/
-    //比赛id
     @Id
     private String gameId;
     //比赛名称

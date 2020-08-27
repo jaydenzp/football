@@ -1046,9 +1046,9 @@ public class DateUtils {
      */
     public static int validDate(String syear, String smonth, String sday) {
         int ayear, amonth, aday;
-        ayear = StringUtils.myparseInt(syear, 0);
-        amonth = StringUtils.myparseInt(smonth, 0);
-        aday = StringUtils.myparseInt(sday, 0);
+        ayear = StringUtils.parseStringToIntOrSetDefaultValue(syear, 0);
+        amonth = StringUtils.parseStringToIntOrSetDefaultValue(smonth, 0);
+        aday = StringUtils.parseStringToIntOrSetDefaultValue(sday, 0);
         return validDate(ayear, amonth, aday);
     }
 
@@ -1115,9 +1115,9 @@ public class DateUtils {
         if (validDate(aObj[0]) == 0) {
             String[] aTimeObj = StringUtils.splitString("/:/", aObj[1]);
             if (aTimeObj.length == 3) {
-                int nHour = StringUtils.myparseInt(aTimeObj[0], 0);
-                int nMin = StringUtils.myparseInt(aTimeObj[0], 0);
-                int nSec = StringUtils.myparseInt(aTimeObj[0], 0);
+                int nHour = StringUtils.parseStringToIntOrSetDefaultValue(aTimeObj[0], 0);
+                int nMin = StringUtils.parseStringToIntOrSetDefaultValue(aTimeObj[0], 0);
+                int nSec = StringUtils.parseStringToIntOrSetDefaultValue(aTimeObj[0], 0);
                 return validTime(nHour, nMin, nSec);
             }
         }
@@ -1139,9 +1139,9 @@ public class DateUtils {
         boolean isEmpty = false;
 
         int ayear, amonth, aday;
-        ayear = StringUtils.myparseInt(syear, 0);
-        amonth = StringUtils.myparseInt(smonth, 0);
-        aday = StringUtils.myparseInt(sday, 0);
+        ayear = StringUtils.parseStringToIntOrSetDefaultValue(syear, 0);
+        amonth = StringUtils.parseStringToIntOrSetDefaultValue(smonth, 0);
+        aday = StringUtils.parseStringToIntOrSetDefaultValue(sday, 0);
 
         if ((ayear == 0) || (amonth == 0) || (aday == 0)) {
             isEmpty = true;

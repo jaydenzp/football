@@ -13,9 +13,11 @@ import java.util.List;
 public interface GameDetailService extends BaseService<GameDetail> {
 
 
-    /*GameDetail create(GameDetail gameDetail);
+    GameDetail create(GameDetail gameDetail);
 
-    List<Team> findGameDetails(GameDetail gameDetail);
+    List<GameDetail> findAll(GameDetail gameDetail);
 
-    GameDetail findById(Long id);*/
+    GameDetail findById(String id);
+
+    List<GameDetail> saveAll (List<GameDetail> gameDetails);
 }

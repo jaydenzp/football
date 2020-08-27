@@ -2,15 +2,20 @@ package com.zp.football.domain;
 
 import javax.persistence.*;
 
+/**
+ * , indexes = {
+ *         @Index(name = "i_team_number",  columnList="teamNumber"),
+ *         @Index(name = "i_player_name",  columnList="playerName"),
+ *         @Index(name = "i_position",  columnList="position")}
+ */
+
 @Entity
 @Table(name = "team")
 public class Team {
-    //主键
-/*    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;*/
-    //球队id
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    //队伍id
     private String teamId;
     //号码
     private String teamNumber;
@@ -38,6 +43,14 @@ public class Team {
     private int numberOfRedCards;
     //身价
     private int worth;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTeamId() {
         return teamId;

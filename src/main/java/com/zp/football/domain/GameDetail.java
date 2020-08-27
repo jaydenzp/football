@@ -2,6 +2,12 @@ package com.zp.football.domain;
 
 import javax.persistence.*;
 
+/**
+ * , indexes = {
+ *         @Index(name = "in_home_team",  columnList="homeTeam"),
+ *         @Index(name = "in_visiting_team",  columnList="visitingTeam")}
+ */
+
 @Entity
 @Table(name = "game_detail")
 public class GameDetail {
@@ -14,6 +20,8 @@ public class GameDetail {
     private String gameId;
     //主队名称
     private String homeTeam;
+    //客队名称
+    private String visitingTeam;
     //交战得分
     private int homeTeamWinScore;
     //交战失分分
@@ -32,10 +40,24 @@ public class GameDetail {
     private int lastTenHomeTeamWinTimes;
     private int lastTenHomeTeamDrawTimes;
     private int lastTenHomeTeamDefeatTimes;
+
+    //主队近10场进球数
+    private int lastTenHomeGoals;
+
+    //主队近10场失球数
+    private int lastTenHomeLoseGoals;
+
     //客队近十场胜负平
     private int lastTenVisitingTeamWinTimes;
     private int lastTenVisitingTeamDrawTimes;
     private int lastTenVisitingTeamDefeatTimes;
+
+    //客队近10场进球数
+    private int lastTenVisitingGoals;
+
+    //客队近10场失球数
+    private int lastTenVisitingLoseGoals;
+
     //主队联赛胜率
     private double homeTeamRateOfWinning;
     //主队联赛主场胜率
@@ -49,14 +71,28 @@ public class GameDetail {
     //客队联赛客场胜率
     private double visitingTeamAwayRateOfWinning;
     //主队联赛平均进球
-    private int homeTeamAverageGoals;
-    //主队联赛平均失球
-    private int homeTeamConcededAverage;
-    //客队联赛平均进球
-    private int visitingTeamAverageGoals;
-    //客队联赛平均失球
-    private int visitingTeamConcededAverage;
+    private double homeTeamAverageGoals;
 
+    //主队联赛主场平均进球
+    private double homeTeamHomeAverageGoals;
+
+    //主队联赛平均失球
+    private double homeTeamConcededAverage;
+
+    //主队联赛主场平均失球
+    private double homeTeamHomeConcededAverage;
+
+    //客队联赛平均进球
+    private double visitingTeamAverageGoals;
+
+    //客队联赛客场平均进球
+    private double visitingTeamVisitingAverageGoals;
+
+    //客队联赛平均失球
+    private double visitingTeamConcededAverage;
+
+    //客队联赛客场平均失球
+    private double visitingTeamVisitingConcededAverage;
 
     public String getGameId() {
         return gameId;
@@ -72,6 +108,14 @@ public class GameDetail {
 
     public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
+    }
+
+    public String getVisitingTeam() {
+        return visitingTeam;
+    }
+
+    public void setVisitingTeam(String visitingTeam) {
+        this.visitingTeam = visitingTeam;
     }
 
     public int getHomeTeamWinScore() {
@@ -154,6 +198,22 @@ public class GameDetail {
         this.lastTenHomeTeamDefeatTimes = lastTenHomeTeamDefeatTimes;
     }
 
+    public int getLastTenHomeGoals() {
+        return lastTenHomeGoals;
+    }
+
+    public void setLastTenHomeGoals(int lastTenHomeGoals) {
+        this.lastTenHomeGoals = lastTenHomeGoals;
+    }
+
+    public int getLastTenHomeLoseGoals() {
+        return lastTenHomeLoseGoals;
+    }
+
+    public void setLastTenHomeLoseGoals(int lastTenHomeLoseGoals) {
+        this.lastTenHomeLoseGoals = lastTenHomeLoseGoals;
+    }
+
     public int getLastTenVisitingTeamWinTimes() {
         return lastTenVisitingTeamWinTimes;
     }
@@ -176,6 +236,22 @@ public class GameDetail {
 
     public void setLastTenVisitingTeamDefeatTimes(int lastTenVisitingTeamDefeatTimes) {
         this.lastTenVisitingTeamDefeatTimes = lastTenVisitingTeamDefeatTimes;
+    }
+
+    public int getLastTenVisitingGoals() {
+        return lastTenVisitingGoals;
+    }
+
+    public void setLastTenVisitingGoals(int lastTenVisitingGoals) {
+        this.lastTenVisitingGoals = lastTenVisitingGoals;
+    }
+
+    public int getLastTenVisitingLoseGoals() {
+        return lastTenVisitingLoseGoals;
+    }
+
+    public void setLastTenVisitingLoseGoals(int lastTenVisitingLoseGoals) {
+        this.lastTenVisitingLoseGoals = lastTenVisitingLoseGoals;
     }
 
     public double getHomeTeamRateOfWinning() {
@@ -226,43 +302,76 @@ public class GameDetail {
         this.visitingTeamAwayRateOfWinning = visitingTeamAwayRateOfWinning;
     }
 
-    public int getHomeTeamAverageGoals() {
+    public double getHomeTeamAverageGoals() {
         return homeTeamAverageGoals;
     }
 
-    public void setHomeTeamAverageGoals(int homeTeamAverageGoals) {
+    public void setHomeTeamAverageGoals(double homeTeamAverageGoals) {
         this.homeTeamAverageGoals = homeTeamAverageGoals;
     }
 
-    public int getHomeTeamConcededAverage() {
+    public double getHomeTeamHomeAverageGoals() {
+        return homeTeamHomeAverageGoals;
+    }
+
+    public void setHomeTeamHomeAverageGoals(double homeTeamHomeAverageGoals) {
+        this.homeTeamHomeAverageGoals = homeTeamHomeAverageGoals;
+    }
+
+    public double getHomeTeamConcededAverage() {
         return homeTeamConcededAverage;
     }
 
-    public void setHomeTeamConcededAverage(int homeTeamConcededAverage) {
+    public void setHomeTeamConcededAverage(double homeTeamConcededAverage) {
         this.homeTeamConcededAverage = homeTeamConcededAverage;
     }
 
-    public int getVisitingTeamAverageGoals() {
+    public double getHomeTeamHomeConcededAverage() {
+        return homeTeamHomeConcededAverage;
+    }
+
+    public void setHomeTeamHomeConcededAverage(double homeTeamHomeConcededAverage) {
+        this.homeTeamHomeConcededAverage = homeTeamHomeConcededAverage;
+    }
+
+    public double getVisitingTeamAverageGoals() {
         return visitingTeamAverageGoals;
     }
 
-    public void setVisitingTeamAverageGoals(int visitingTeamAverageGoals) {
+    public void setVisitingTeamAverageGoals(double visitingTeamAverageGoals) {
         this.visitingTeamAverageGoals = visitingTeamAverageGoals;
     }
 
-    public int getVisitingTeamConcededAverage() {
+    public double getVisitingTeamVisitingAverageGoals() {
+        return visitingTeamVisitingAverageGoals;
+    }
+
+    public void setVisitingTeamVisitingAverageGoals(double visitingTeamVisitingAverageGoals) {
+        this.visitingTeamVisitingAverageGoals = visitingTeamVisitingAverageGoals;
+    }
+
+    public double getVisitingTeamConcededAverage() {
         return visitingTeamConcededAverage;
     }
 
-    public void setVisitingTeamConcededAverage(int visitingTeamConcededAverage) {
+    public void setVisitingTeamConcededAverage(double visitingTeamConcededAverage) {
         this.visitingTeamConcededAverage = visitingTeamConcededAverage;
+    }
+
+    public double getVisitingTeamVisitingConcededAverage() {
+        return visitingTeamVisitingConcededAverage;
+    }
+
+    public void setVisitingTeamVisitingConcededAverage(double visitingTeamVisitingConcededAverage) {
+        this.visitingTeamVisitingConcededAverage = visitingTeamVisitingConcededAverage;
     }
 
     @Override
     public String toString() {
         return "GameDetail{" +
-                ", gameId='" + gameId + '\'' +
+                "gameId='" + gameId + '\'' +
                 ", homeTeam='" + homeTeam + '\'' +
+                ", visitingTeam='" + visitingTeam + '\'' +
                 ", homeTeamWinScore=" + homeTeamWinScore +
                 ", homeTeamLoseScore=" + homeTeamLoseScore +
                 ", smallBallTimes=" + smallBallTimes +
@@ -273,9 +382,13 @@ public class GameDetail {
                 ", lastTenHomeTeamWinTimes=" + lastTenHomeTeamWinTimes +
                 ", lastTenHomeTeamDrawTimes=" + lastTenHomeTeamDrawTimes +
                 ", lastTenHomeTeamDefeatTimes=" + lastTenHomeTeamDefeatTimes +
+                ", lastTenHomeGoals=" + lastTenHomeGoals +
+                ", lastTenHomeLoseGoals=" + lastTenHomeLoseGoals +
                 ", lastTenVisitingTeamWinTimes=" + lastTenVisitingTeamWinTimes +
                 ", lastTenVisitingTeamDrawTimes=" + lastTenVisitingTeamDrawTimes +
                 ", lastTenVisitingTeamDefeatTimes=" + lastTenVisitingTeamDefeatTimes +
+                ", lastTenVisitingGoals=" + lastTenVisitingGoals +
+                ", lastTenVisitingLoseGoals=" + lastTenVisitingLoseGoals +
                 ", homeTeamRateOfWinning=" + homeTeamRateOfWinning +
                 ", homeTeamHomeRateOfWinning=" + homeTeamHomeRateOfWinning +
                 ", homeTeamAwayRateOfWinning=" + homeTeamAwayRateOfWinning +
@@ -283,9 +396,13 @@ public class GameDetail {
                 ", visitingTeamHomeRateOfWinning=" + visitingTeamHomeRateOfWinning +
                 ", visitingTeamAwayRateOfWinning=" + visitingTeamAwayRateOfWinning +
                 ", homeTeamAverageGoals=" + homeTeamAverageGoals +
+                ", homeTeamHomeAverageGoals=" + homeTeamHomeAverageGoals +
                 ", homeTeamConcededAverage=" + homeTeamConcededAverage +
+                ", homeTeamHomeConcededAverage=" + homeTeamHomeConcededAverage +
                 ", visitingTeamAverageGoals=" + visitingTeamAverageGoals +
+                ", visitingTeamVisitingAverageGoals=" + visitingTeamVisitingAverageGoals +
                 ", visitingTeamConcededAverage=" + visitingTeamConcededAverage +
+                ", visitingTeamVisitingConcededAverage=" + visitingTeamVisitingConcededAverage +
                 '}';
     }
 }

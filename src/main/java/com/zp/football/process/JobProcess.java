@@ -28,8 +28,8 @@ public class JobProcess implements PageProcessor {
     @Override
     public void process(Page page) {
         //getGameData(page);
-        //getGameDetailData(page);
-        getTeamPlayer(page);
+        getGameDetailData(page);
+        //getTeamPlayer(page);
     }
 
     //设置
@@ -55,7 +55,7 @@ public class JobProcess implements PageProcessor {
 
     public void getGameDetailData(Page page) {
         //获取赛事id
-        String url = page.getHtml().xpath("//*[@id=\"odds_nav_list\"]/li[1]").links().get();
+        String url = page.getUrl().get();
         String gameId = StringUtils.getEndOfNumParams(url);
         List<String> all = page.getHtml().$("a.hd_name").$("a", "text").all();
         //主队名称
@@ -65,16 +65,22 @@ public class JobProcess implements PageProcessor {
 
         Selectable selectable = page.getHtml().xpath("//*[@id=\"team_jiaozhan\"]/div[1]/span");
 
-        //胜次数
+        //胜次数 x胜
         String sl = selectable.$("em.red", "text").get();
+        String hsheng = StringUtils.getPrefixNumberText(sl);
+
         //String winTimes = StringUtils.getPrefixNumberText(selectable.$("em.red", "text").get());
 
-        //平次数
+        //平次数 x平
         String pl = selectable.$("em.green", "text").get();
+        String hping = StringUtils.getPrefixNumberText(pl);
+
         //String drawTimes = StringUtils.getPrefixNumberText(selectable.$("em.green", "text").get());
 
-        //负次数
+        //负次数 x负
         String fl = selectable.$("em.blue", "text").get();
+        String hfu = StringUtils.getPrefixNumberText(fl);
+
         //String loseTimes = StringUtils.getPrefixNumberText(selectable.$("em.blue", "text").get());
 
         //获取全部信息
@@ -92,66 +98,81 @@ public class JobProcess implements PageProcessor {
         }
 
         //主队近10场胜负平
-        //胜
+        //胜 x胜
         String  ww = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[1]/span[1]").$("span","text").get();
-        //ping
-        String  dd = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[1]/span[2]").$("span","text").get();
-        //负
-        String  ll = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[1]/span[3]").$("span","text").get();
+        String htensheng = StringUtils.getPrefixNumberText(ww);
 
-        //主队近10场进球数
+        //ping x ping
+        String  dd = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[1]/span[2]").$("span","text").get();
+        String htenping = StringUtils.getPrefixNumberText(dd);
+        //负 x fu
+        String  ll = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[1]/span[3]").$("span","text").get();
+        String htenfu = StringUtils.getPrefixNumberText(ll);
+
+        //主队近10场进球数  x qiu
         //*[@id="zhanji_01"]/div[3]/div/p/span[2]/span[1]
         String  jj = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[2]/span[1]").$("span","text").get();
-        //主队近10场失球数
+        String htengoals = StringUtils.getPrefixNumberText(jj);
+        //主队近10场失球数 x qiu
         //*[@id="zhanji_01"]/div[3]/div/p/span[2]/span[2]
         String  ss = page.getHtml().xpath("//*[@id=\"zhanji_01\"]/div[3]/div/p/span[2]/span[2]").$("span","text").get();
+        String htenlosegoals = StringUtils.getPrefixNumberText(ss);
 
 
         //客队近十场胜负平
-        //胜
+        //胜 x sheng
         //*[@id="zhanji_00"]/div[3]/div/p/span[1]/span[1]
         String  kww = page.getHtml().xpath("//*[@id=\"zhanji_00\"]/div[3]/div/p/span[1]/span[1]").$("span","text").get();
+        String kww2 = StringUtils.getPrefixNumberText(kww);
 
-        //平
+        //平 xping
         //*[@id="zhanji_00"]/div[3]/div/p/span[1]/span[2]
         String  kdd= page.getHtml().xpath("//*[@id=\"zhanji_00\"]/div[3]/div/p/span[1]/span[2]").$("span","text").get();
+        String kdd2 = StringUtils.getPrefixNumberText(kdd);
 
-        //负
+        //负 x fu
         //*[@id="zhanji_00"]/div[3]/div/p/span[1]/span[3]
         String  kll= page.getHtml().xpath("//*[@id=\"zhanji_00\"]/div[3]/div/p/span[1]/span[3]").$("span","text").get();
+        String kll2 = StringUtils.getPrefixNumberText(kll);
 
-        //主队联赛胜率
+        //客队近10场进球数  //*[@id="zhanji_00"]/div[3]/div/p/span[2]/span[1]
+        String goal10= page.getHtml().xpath("//*[@id=\"zhanji_00\"]/div[3]/div/p/span[2]/span[1]").$("span","text").get();
+
+        //客队近10场失球数 //*[@id="zhanji_00"]/div[3]/div/p/span[2]/span[2]
+        String lose10= page.getHtml().xpath("//*[@id=\"zhanji_00\"]/div[3]/div/p/span[2]/span[2]").$("span","text").get();
+
+        //主队联赛胜率 xx%
         String s1 = page.getHtml().$("body > div.odds_content > div:nth-child(2) > div.M_content > div.team_a > table > tbody > tr:nth-child(2) > td:nth-child(11)","text").get();
-        //主队联赛主场胜率
+        //主队联赛主场胜率 xx%
         String s2 = page.getHtml().$("body > div.odds_content > div:nth-child(2) > div.M_content > div.team_a > table > tbody > tr.tr3 > td:nth-child(11)","text").get();
-        //主队联赛客场胜率
+        //主队联赛客场胜率 xx%
         String s3 = page.getHtml().$("body > div.odds_content > div:nth-child(2) > div.M_content > div.team_a > table > tbody > tr:nth-child(4) > td:nth-child(11)","text").get();
-        //客队联赛胜率
+        //客队联赛胜率 xx%
         String s4 = page.getHtml().$("body > div.odds_content > div:nth-child(2) > div.M_content > div.team_b > table > tbody > tr:nth-child(2) > td:nth-child(11)","text").get();
 
-        //客队联赛主场胜率
+        //客队联赛主场胜率 xx%
         String s5 = page.getHtml().$("body > div.odds_content > div:nth-child(2) > div.M_content > div.team_b > table > tbody > tr:nth-child(3) > td:nth-child(11)","text").get();
-        //客队联赛客场胜率
+        //客队联赛客场胜率 xx%
         String s6 = page.getHtml().$("body > div.odds_content > div:nth-child(2) > div.M_content > div.team_b > table > tbody > tr.tr3 > td:nth-child(11)","text").get();
 
-        //主队联赛平均进球
+        //主队联赛平均进球 x.xx球
         String s7 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_a > table > tbody > tr.tr1 > td:nth-child(2)","text").get();
-        //主队主场平均进球
+        //主队主场平均进球 x.xx 球
         String s8 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_a > table > tbody > tr.tr1 > td:nth-child(3)","text").get();
-        //主队联赛平均失球
+        //主队联赛平均失球 x.xx 球
         String s9 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_a > table > tbody > tr.tr2 > td:nth-child(2)","text").get();
-        //主队主场平均失球
+        //主队主场平均失球 x.xx 球
         String s10 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_a > table > tbody > tr.tr2 > td:nth-child(3)","text").get();
 
-        //客队联赛平均进球
+        //客队联赛平均进球 x.xx qiu
         String s11 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_b > table > tbody > tr.tr1 > td:nth-child(2)","text").get();
 
-        //客队联赛客场平均进球
+        //客队联赛客场平均进球 x.xxqiu
         String s12 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_b > table > tbody > tr.tr1 > td:nth-child(4)","text").get();
-        //客队联赛平均失球
+        //客队联赛平均失球 x.xxqiu
         String s13 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_b > table > tbody > tr.tr2 > td:nth-child(2)", "text").get();
 
-        //客队联赛客场平均失球
+        //客队联赛客场平均失球 x.xx qiu
         String s14 = page.getHtml().$("body > div.odds_content > div:nth-child(6) > div.M_content > div.team_b > table > tbody > tr.tr2 > td:nth-child(4)","text").get();
         System.out.println(gameId);
     }
@@ -230,32 +251,68 @@ public class JobProcess implements PageProcessor {
             //去掉第一个tr，第一个tr是表头信息
             String text = selectable.$("td:eq(1)", "text").get();
             if(text!=null && text.length()>0){
-                //号码
-                String teamNum = selectable.$("td:eq(1)", "text").get();
-                //球员名
-                String name = selectable.$("td:eq(3)>span>a","text").get();
-                //位置
-                String position = selectable.$("td:eq(4)","text").get();
-                //年龄
-                String age = selectable.$("td:eq(5)","text").get();
-                //身高
-                String high = selectable.$("td:eq(6)","text").get();
-                //体重
-                String weight = selectable.$("td:eq(7)","text").get();
-                //出场次数
-                String appearance = selectable.$("td:eq(8)>span","text").get();
-                //出场时间
-                String appearanceTime = selectable.$("td:eq(9)>span","text").get();
-                //进球
-                String goals = selectable.$("td:eq(10)","text").get();
-                //助攻
-                String assists = selectable.$("td:eq(11)","text").get();
-                //黄牌
-                String yellow = selectable.$("td:eq(12)","text").get();
-                //红牌
-                String red = selectable.$("td:eq(13)","text").get();
-                //身价
-                String worth = selectable.$("td:eq(14)>span:eq(0)","text").get();
+                //判断第一个是否有空格，不显示位置
+                if(selectable.$("td").nodes().size()<15){
+                    //如果第一个值为空，则表明为后面同类型的
+                    //号码
+                    String teamNum = selectable.$("td:eq(0)", "text").get();
+                    //球员名
+                    String name = selectable.$("td:eq(2)>span>a","text").get();
+                    //位置
+                    String position = selectable.$("td:eq(3)","text").get();
+                    //年龄
+                    String age = selectable.$("td:eq(4)","text").get();
+                    //身高 181cm
+                    String high = selectable.$("td:eq(5)","text").get();
+                    String high2 = StringUtils.getPrefixNumberText(high);
+                    //体重 69kg
+                    String weight = selectable.$("td:eq(6)","text").get();
+                    String weight2 = StringUtils.getPrefixNumberText(weight);
+                    //出场次数
+                    String appearance = selectable.$("td:eq(7)>span","text").get();
+                    //出场时间
+                    String appearanceTime = selectable.$("td:eq(8)>span","text").get();
+                    //进球
+                    String goals = selectable.$("td:eq(9)>span","text").get();
+                    //助攻
+                    String assists = selectable.$("td:eq(10)>span","text").get();
+                    //黄牌
+                    String yellow = selectable.$("td:eq(11)>span","text").get();
+                    //红牌
+                    String red = selectable.$("td:eq(12)>span","text").get();
+                    //身价 带欧元符号
+                    String worth = selectable.$("td:eq(13)>span:eq(0)","text").get();
+                    String worth2 = StringUtils.getPrefixNumberText(worth);
+                }else {
+                    //号码
+                    String teamNum = selectable.$("td:eq(1)", "text").get();
+                    //球员名
+                    String name = selectable.$("td:eq(3)>span>a","text").get();
+                    //位置
+                    String position = selectable.$("td:eq(4)","text").get();
+                    //年龄
+                    String age = selectable.$("td:eq(5)","text").get();
+                    //身高 181cm
+                    String high = selectable.$("td:eq(6)","text").get();
+                    //体重 69kg
+                    String weight = selectable.$("td:eq(7)","text").get();
+                    //出场次数
+                    String appearance = selectable.$("td:eq(8)>span","text").get();
+                    //出场时间
+                    String appearanceTime = selectable.$("td:eq(9)>span","text").get();
+                    //进球
+                    String goals = selectable.$("td:eq(10)>span","text").get();
+                    //助攻
+                    String assists = selectable.$("td:eq(11)>span","text").get();
+                    //黄牌
+                    String yellow = selectable.$("td:eq(12)>span","text").get();
+                    //红牌
+                    String red = selectable.$("td:eq(13)>span","text").get();
+                    //身价
+                    String worth = selectable.$("td:eq(14)>span:eq(0)","text").get();
+                    String worth2 = StringUtils.getPrefixNumberText(worth);
+
+                }
             }
         }
 

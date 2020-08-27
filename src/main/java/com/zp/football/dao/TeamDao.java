@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Author: zhanpeng
  * @Date: 2020/7/23 11:01
  */
-public interface TeamDao extends  JpaRepository<Team,String>{
+public interface TeamDao extends  JpaRepository<Team,Long>{
 }

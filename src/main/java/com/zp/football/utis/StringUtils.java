@@ -22,18 +22,18 @@ import java.util.regex.Pattern;
  */
 public class StringUtils {
 
-    /** 加权因子 */
+    /**
+     * 加权因子
+     */
     @SuppressWarnings("unused")
-    private static final int[] weight = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6,
-            3, 7, 9, 10, 5, 8, 4, 2, 1 };
+    private static final int[] weight = new int[]{7, 9, 10, 5, 8, 4, 2, 1, 6,
+            3, 7, 9, 10, 5, 8, 4, 2, 1};
 
     /**
      * 用指定的字符集编码URL
      *
-     * @param url
-     *            要编码的URL
-     * @param charset
-     *            字符集
+     * @param url     要编码的URL
+     * @param charset 字符集
      * @return 编码后的URL
      */
     public static String encodeURL(String url, String charset) {
@@ -50,10 +50,8 @@ public class StringUtils {
     /**
      * 以指定的字符编码解析字符串的长度
      *
-     * @param txt
-     *            要解析的字符串
-     * @param charset
-     *            编码
+     * @param txt     要解析的字符串
+     * @param charset 编码
      * @return 字符串的长度
      */
     public static int getStrLength(String txt, String charset) {
@@ -67,10 +65,8 @@ public class StringUtils {
     /**
      * 去掉指定字符串的首尾特殊字符
      *
-     * @param source
-     *            指定字符串
-     * @param beTrim
-     *            要去除的特殊字符
+     * @param source 指定字符串
+     * @param beTrim 要去除的特殊字符
      * @return 去掉特殊字符后的字符串
      */
     public static String trimStringWithAppointedChar(String source,
@@ -98,12 +94,9 @@ public class StringUtils {
     /**
      * 去掉指定字符串的首尾特殊字符
      *
-     * @param source
-     *            指定字符串
-     * @param beTrim
-     *            要去除的特殊字符
-     * @param endTrim
-     *            要去的特殊字符
+     * @param source  指定字符串
+     * @param beTrim  要去除的特殊字符
+     * @param endTrim 要去的特殊字符
      * @return 去掉特殊字符后的字符串
      */
     public static String trimStringWithAppointedChar(String source,
@@ -131,10 +124,8 @@ public class StringUtils {
     /**
      * 用sign分隔字符串data(不判断data是否带有双引号的)
      *
-     * @param data
-     *            要拆分的字符串
-     * @param sign
-     *            分隔符
+     * @param data 要拆分的字符串
+     * @param sign 分隔符
      * @return list 分隔后的List
      */
     public static List<String> spit(String data, String sign) {
@@ -151,10 +142,8 @@ public class StringUtils {
     /**
      * 用sign分隔字符串data(data是带有双引号的) 如:"system_id","type","command_line",
      *
-     * @param data
-     *            要拆分的字符串
-     * @param sign
-     *            分隔符
+     * @param data 要拆分的字符串
+     * @param sign 分隔符
      * @return list 分隔后的List
      */
     public static List<String> spitWithQuotationMark(String data, String sign) {
@@ -190,8 +179,7 @@ public class StringUtils {
     /**
      * 判断字符串为null或者为""
      *
-     * @param value
-     *            要判断的字符串
+     * @param value 要判断的字符串
      * @return 是否为null或者为""
      */
     public static boolean isNullorBlank(String value) {
@@ -201,8 +189,7 @@ public class StringUtils {
     /**
      * 去掉指定字符串两端的空格
      *
-     * @param value
-     *            指定的字符串
+     * @param value 指定的字符串
      * @return 去掉两端空格后的字符串。如果传入的指定字符串是null，返回""。
      */
     public static String trim(String value) {
@@ -216,9 +203,7 @@ public class StringUtils {
     /**
      * 将指定字符串的两端加上单引号"'"
      *
-     * @param value
-     *            指定的字符串
-     *
+     * @param value 指定的字符串
      * @return 加过单引号的字符串，如果传入的字符串是null，返回null。
      */
     public static String sem(String value) {
@@ -233,12 +218,10 @@ public class StringUtils {
     /**
      * 将指定的数字转化为指定长度的字符串，多余部分用"#"填充。例如：intToStrWithSharp(1000, 6)->"##1000"
      *
-     * @param value
-     *            要转换的整数
-     * @param length
-     *            转换后的字符串长度
+     * @param value  要转换的整数
+     * @param length 转换后的字符串长度
      * @return 转换后的字符串，如果指定的长度小于整数的位数，则只返回数字。例如：intToStrWithSharp(1000,
-     *         2)->"1000"
+     * 2)->"1000"
      */
     public static String intToStrWithSharp(Integer value, int length) {
         int valueLength = value.toString().length();
@@ -259,8 +242,7 @@ public class StringUtils {
     /**
      * 判断一个String对象是否为null，为null返回""，否则返回str自身。
      *
-     * @param str
-     *            要判断的String对象
+     * @param str 要判断的String对象
      * @return str自身或""
      */
     public static String getEmptyStringIfNull(String str) {
@@ -272,8 +254,7 @@ public class StringUtils {
     /**
      * 将一个byte数组转换为字符串
      *
-     * @param arr
-     *            要转换的byte数组
+     * @param arr 要转换的byte数组
      * @return 转换好的字符串，如果数组的length=0，则返回""。
      */
     public static String bytetoString(byte[] arr) {
@@ -293,8 +274,7 @@ public class StringUtils {
     /**
      * 分析字符串得到Integer.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return Integer
      */
     public static Integer myparseIntObj(String str1) {
@@ -318,24 +298,21 @@ public class StringUtils {
     /**
      * 分析一个字符串,得到一个整数,如果错误,设置为缺省值-1.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return int
      */
     public static int myparseInt(String str1) {
-        return myparseInt(str1, -1);
+        return parseStringToIntOrSetDefaultValue(str1, -1);
     }
 
     /**
      * 分析一个字符串,得到一个整数,如果错误,设置为缺省值. 如果一个字符串以0x开头,则认为是16进制的.
      *
-     * @param str1
-     *            字符串
-     * @param nDefault
-     *            缺省值
+     * @param str1     字符串
+     * @param nDefault 缺省值
      * @return int
      */
-    public static int myparseInt(String str1, int nDefault) {
+    public static int parseStringToIntOrSetDefaultValue(String str1, int nDefault) {
         int result;
         try {
             if (isBlank(str1)) {
@@ -358,8 +335,7 @@ public class StringUtils {
     /**
      * 分析一个字符串得到float,如果错误,设置一个缺省值-1.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return float
      */
     public static float myparseFloat(String str1) {
@@ -369,10 +345,8 @@ public class StringUtils {
     /**
      * 分析一个字符串得到float,如果错误,设置一个缺省值.
      *
-     * @param str1
-     *            String
-     * @param nDefault
-     *            缺省值
+     * @param str1     String
+     * @param nDefault 缺省值
      * @return float
      */
     public static float myparseFloat(String str1, float nDefault) {
@@ -388,8 +362,7 @@ public class StringUtils {
     /**
      * 分析一个字符串得到Float,如果错误,返回null.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return Float(may be null)
      */
     public static Float myparseFloatObj(String str1) {
@@ -405,10 +378,26 @@ public class StringUtils {
     }
 
     /**
+     * 分析一个字符串得到double,如果错误,设置一个缺省值.
+     *
+     * @param str1     String
+     * @param nDefault 缺省值
+     * @return double
+     */
+    public static double parseStringToDouble(String str1, double nDefault) {
+        double result;
+        try {
+            result = isBlank(str1) ? nDefault : Double.parseDouble(str1);
+        } catch (NumberFormatException e) {
+            result = nDefault;
+        }
+        return result;
+    }
+
+    /**
      * 分析一个字符串得到long,如果错误,设置一个缺省值 -1.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return long
      */
     public static long myparseLong(String str1) {
@@ -418,10 +407,8 @@ public class StringUtils {
     /**
      * 分析一个字符串得到long,如果错误,设置一个缺省值 .
      *
-     * @param str1
-     *            字符串
-     * @param nDefault
-     *            缺省值
+     * @param str1     字符串
+     * @param nDefault 缺省值
      * @return long
      */
     public static long myparseLong(String str1, long nDefault) {
@@ -437,8 +424,7 @@ public class StringUtils {
     /**
      * 分析一个字符串得到Long,如果错误,返回null .
      *
-     * @param str1
-     *            字符串
+     * @param str1 字符串
      * @return Long
      */
     public static Long myparseLongObj(String str1) {
@@ -462,9 +448,8 @@ public class StringUtils {
     /**
      * 为显示/编辑而转换串值，将空对象转换为空串.
      *
-     * @param astr
-     *            字符串的值
-     * @return 如果字符串为空,则返回空串(不是null),如果不空,原样返回
+     * @param astr 字符串的值
+     * @return 如果字符串为空, 则返回空串(不是null), 如果不空, 原样返回
      */
     public static String getShowStr(String astr) {
         return (null == astr) ? "" : astr;
@@ -473,10 +458,8 @@ public class StringUtils {
     /**
      * 返回一个字符串的n次组合后的字符串.
      *
-     * @param sStr
-     *            原字符串
-     * @param nRate
-     *            次数
+     * @param sStr  原字符串
+     * @param nRate 次数
      * @return 组合好的字符串
      */
     public static String getManyStr(String sStr, int nRate) {
@@ -490,10 +473,8 @@ public class StringUtils {
     /**
      * 格式化数字:返回定长的字符串.
      *
-     * @param aNum
-     *            格式化的数字
-     * @param aLength
-     *            长度
+     * @param aNum    格式化的数字
+     * @param aLength 长度
      * @return 格式化好的字符串.
      */
     public static String formatNumber(int aNum, int aLength) {
@@ -513,10 +494,8 @@ public class StringUtils {
     /**
      * 根据格式输出浮点数的字符串.
      *
-     * @param aFloat
-     *            浮点数
-     * @param nSyo
-     *            字符串格式,参考NumberFormat的说明.
+     * @param aFloat 浮点数
+     * @param nSyo   字符串格式,参考NumberFormat的说明.
      * @return String
      */
     public static String getShowFloat(float aFloat, String nSyo) {
@@ -529,12 +508,9 @@ public class StringUtils {
     /**
      * 从属性里面读取一个字符串出来,如果空,返回缺省值.
      *
-     * @param aPROP
-     *            属性句柄
-     * @param itemName
-     *            属性名称
-     * @param sDefault
-     *            缺省值
+     * @param aPROP    属性句柄
+     * @param itemName 属性名称
+     * @param sDefault 缺省值
      * @return String
      */
     public static String getPROPString(PropertyResourceBundle aPROP,
@@ -559,10 +535,8 @@ public class StringUtils {
     /**
      * 从属性里面读取一个字符串出来,如果空,返回"".
      *
-     * @param aPROP
-     *            属性句柄
-     * @param itemName
-     *            属性名称
+     * @param aPROP    属性句柄
+     * @param itemName 属性名称
      * @return String
      */
     public static String getPROPString(PropertyResourceBundle aPROP,
@@ -572,17 +546,13 @@ public class StringUtils {
 
     /**
      * 翻译一个字符串到目标编码.
-     *
+     * <p>
      * 如果缺省编码为空,则设置缺省编码为源编码.
      *
-     * @param aStr
-     *            源字符串
-     * @param sDefaultEncode
-     *            缺省编码
-     * @param srcCharSet
-     *            源编码
-     * @param destCharSet
-     *            目标编码
+     * @param aStr           源字符串
+     * @param sDefaultEncode 缺省编码
+     * @param srcCharSet     源编码
+     * @param destCharSet    目标编码
      * @return 编码后的字符串
      */
     public static String getEXTCHARSETString(String aStr,
@@ -615,12 +585,10 @@ public class StringUtils {
     }
 
 
-
     /**
      * 字符串是否为空:null或者长度为0.
      *
-     * @param astr
-     *            源字符串.
+     * @param astr 源字符串.
      * @return boolean
      */
     public static boolean isBlank(String astr) {
@@ -630,8 +598,7 @@ public class StringUtils {
     /**
      * 去掉左右空格后字符串是否为空.
      *
-     * @param astr
-     *            String
+     * @param astr String
      * @return boolean
      */
     public static boolean isTrimEmpty(String astr) {
@@ -647,10 +614,8 @@ public class StringUtils {
     /**
      * 按照规则拆分字符串到字符串数组中.
      *
-     * @param pattern
-     *            拆分规则,格式为: /,/
-     * @param aStr
-     *            要拆分的字符串
+     * @param pattern 拆分规则,格式为: /,/
+     * @param aStr    要拆分的字符串
      * @return 拆分后的字符串数组
      */
     public static String[] splitString(String pattern, String aStr) {
@@ -665,12 +630,9 @@ public class StringUtils {
     /**
      * 按照规则拆分字符串到字符串数组中.
      *
-     * @param pattern
-     *            拆分规则,格式为: /,/
-     * @param aStr
-     *            要拆分的字符串
-     * @param nLimit
-     *            拆分次数
+     * @param pattern 拆分规则,格式为: /,/
+     * @param aStr    要拆分的字符串
+     * @param nLimit  拆分次数
      * @return 拆分后的字符串数组
      */
     public static String[] splitString(String pattern, String aStr, int nLimit) {
@@ -685,10 +647,8 @@ public class StringUtils {
     /**
      * 拆分字符串到数组列表中.
      *
-     * @param pattern
-     *            拆分规则
-     * @param aStr
-     *            要拆分的字符串
+     * @param pattern 拆分规则
+     * @param aStr    要拆分的字符串
      * @return 拆分后的数组列表
      */
     @SuppressWarnings("unchecked")
@@ -701,7 +661,8 @@ public class StringUtils {
 
     /**
      * 拆分字符串为一维字符串数组
-     * @param str 要拆分的字符串
+     *
+     * @param str  要拆分的字符串
      * @param sign 字符串拆分的标识符
      * @return strData 拆分后的一维字符串数组
      */
@@ -720,12 +681,9 @@ public class StringUtils {
     /**
      * 截取一定长度的字符串,根据指定的编码来判断长度. 例如指定编码为GBK,则一个汉字为2个字符长度
      *
-     * @param astr
-     *            String
-     * @param nlength
-     *            int
-     * @param destEncode
-     *            String
+     * @param astr       String
+     * @param nlength    int
+     * @param destEncode String
      * @return String
      */
     public static String msubstr(String astr, int nlength, String destEncode) {
@@ -761,14 +719,10 @@ public class StringUtils {
     /**
      * 返回带省略标记的截断的字符串.
      *
-     * @param astr
-     *            源字符串
-     * @param nlength
-     *            截断的长度
-     * @param aDot
-     *            后缀
-     * @param encoding
-     *            编码
+     * @param astr     源字符串
+     * @param nlength  截断的长度
+     * @param aDot     后缀
+     * @param encoding 编码
      * @return String
      */
     public static String getDotMsubstr(String astr, int nlength, String aDot,
@@ -793,12 +747,8 @@ public class StringUtils {
     /**
      * 得到字符串的字符长度 按照指定编码测定.
      *
-     * @param astr
-     *            String
-     *
-     * @param sDestEncode
-     *            String
-     *
+     * @param astr        String
+     * @param sDestEncode String
      * @return int 返回字符长度
      */
     public static int mlength(String astr, String sDestEncode) {
@@ -812,12 +762,9 @@ public class StringUtils {
     /**
      * 连接2个字符串.
      *
-     * @param aOriStr
-     *            源字符串
-     * @param aLinkSign
-     *            连接标记
-     * @param aLinkStr
-     *            要连接的字符串
+     * @param aOriStr   源字符串
+     * @param aLinkSign 连接标记
+     * @param aLinkStr  要连接的字符串
      * @return String
      */
     public static String link2Str(String aOriStr, String aLinkSign,
@@ -832,10 +779,8 @@ public class StringUtils {
     /**
      * 连接字符串数组.
      *
-     * @param astrBf
-     *            StringBuffer
-     * @param aryStr
-     *            String[]
+     * @param astrBf StringBuffer
+     * @param aryStr String[]
      * @return StringBuffer
      */
     public static StringBuffer linkAryStr(StringBuffer astrBf, String[] aryStr) {
@@ -848,10 +793,8 @@ public class StringUtils {
     /**
      * 连接字符串数组.
      *
-     * @param aryStr
-     *            String[]
-     * @param sSign
-     *            String
+     * @param aryStr String[]
+     * @param sSign  String
      * @return String
      */
     public static String linkAryStr(String[] aryStr, String sSign) {
@@ -872,12 +815,9 @@ public class StringUtils {
     /**
      * 字符串替换,用dest替换astr里面的Sign.
      *
-     * @param str1
-     *            源字符串
-     * @param sign
-     *            要被替换的标记
-     * @param dest
-     *            替换后的标记
+     * @param str1 源字符串
+     * @param sign 要被替换的标记
+     * @param dest 替换后的标记
      * @return String
      */
     public static String replace(String str1, String sign, String dest) {
@@ -899,8 +839,7 @@ public class StringUtils {
      * 把用户输入的内容原样显示,但是html按照html格式显示. 对应原版的toTextSee. 其中包含处理回车,空格,Tab等,不翻译
      * <为&lt;
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2TextShow(String str1) {
@@ -931,8 +870,7 @@ public class StringUtils {
     /**
      * 把字符串处理,完全按照输入时的原样显示. html格式的部分也处理为文本.
      *
-     * @param aStr
-     *            String
+     * @param aStr String
      * @return String
      */
     public static String str2PureTextShow(String aStr) {
@@ -942,8 +880,7 @@ public class StringUtils {
     /**
      * 把字符串处理,方便编辑.
      *
-     * @param aStr
-     *            String
+     * @param aStr String
      * @return String
      */
     public static String str2InputTextEdit(String aStr) {
@@ -953,8 +890,7 @@ public class StringUtils {
     /**
      * 返回字符串,编码处理,主要用于html链接的值.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2URLValue(String str1) {
@@ -975,11 +911,10 @@ public class StringUtils {
 
     /**
      * 返回字符串,编码处理,主要用于html链接内部函数的值. 例如javascript的参数
-     *
+     * <p>
      * %22 => " %3c => < %3e => > &amp; =>& %20 =>空格
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2JSUrlFuncValue(String str1) {
@@ -998,11 +933,10 @@ public class StringUtils {
 
     /**
      * 返回字符串,编码处理,主要用于onclick,onchange等javascript的值.
-     *
+     * <p>
      * 引号被替换为 \&quot;
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2JSCommValue(String str1) {
@@ -1025,8 +959,7 @@ public class StringUtils {
      * 转换字符串, 用于普通xml赋值. < replaced with &lt; > replaced with &gt; & replaced
      * with &amp; " replaced with &quot; ' replaced with &apos;
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2TextXML(String str1) {
@@ -1048,8 +981,7 @@ public class StringUtils {
     /**
      * 返回字符串:用于input表单元素的value:对应toHtml_in.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2InputText(String str1) {
@@ -1069,8 +1001,7 @@ public class StringUtils {
     /**
      * 把html中的特殊字符翻译为和显示和输入的一样:原版对应toHtml_all.
      *
-     * @param astr
-     *            String
+     * @param astr String
      * @return String
      */
     public static String str2TextHtml(String astr) {
@@ -1090,8 +1021,7 @@ public class StringUtils {
     /**
      * 把html中的特殊字符翻译为和显示和输入的一样:但不翻译空格 .
      *
-     * @param astr
-     *            String
+     * @param astr String
      * @return String
      */
     public static String str2TextHtmlRidSpace(String astr) {
@@ -1113,8 +1043,7 @@ public class StringUtils {
     /**
      * 把字符串中的双引号替换为\",用作html元素的赋值,例如把这个值放在""中间时.
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2HtmlValue(String str1) {
@@ -1130,11 +1059,10 @@ public class StringUtils {
 
     /**
      * 在用作sql的字符串替换字符串中的单引号为两个单引号.
-     *
+     * <p>
      * 如果是查询组合Sql时需要,请参考CommSQLFunc类
      *
-     * @param str1
-     *            String
+     * @param str1 String
      * @return String
      */
     public static String str2TextSql(String str1) {
@@ -1151,9 +1079,7 @@ public class StringUtils {
     /**
      * if a String identify "true".
      *
-     * @param aPropString
-     *            字符串
-     *
+     * @param aPropString 字符串
      * @return true if y,yes,true,1
      */
     public static boolean isTrueString(String aPropString) {
@@ -1165,15 +1091,9 @@ public class StringUtils {
     /**
      * 将字符串里指定的字符串被代替字符串所替换 例如 指定的字符串 "sdupipo" 将里面出现p的字符穿都变成g
      *
-     * @param source
-     *            指定字符串
-     *
-     * @param target
-     *            要被代替的字符串
-     *
-     * @param replace
-     *            代替字符串
-     *
+     * @param source  指定字符串
+     * @param target  要被代替的字符串
+     * @param replace 代替字符串
      * @return 替换后的字符串
      */
     public static String stringReplace(String source, String target,
@@ -1205,7 +1125,6 @@ public class StringUtils {
 
     /**
      * 判断字符串是否为空
-     *
      */
     public static boolean isNullString(String str) {
         if (str == null || str.trim().length() < 1)
@@ -1216,18 +1135,12 @@ public class StringUtils {
 
     /**
      * 把源字符串的第一字符串去掉然后添加要替换的字符串
-     *
+     * <p>
      * 例如："a,b,c"要把a去掉然后往后面添加d变成"b,c,d" source的大小必须和count相等
      *
-     * @param source
-     *            源字符串
-     *
-     * @param replace
-     *            要替换的字符串
-     *
-     * @param count
-     *            要替换的大小
-     *
+     * @param source  源字符串
+     * @param replace 要替换的字符串
+     * @param count   要替换的大小
      * @return 返回替换后的字符串
      */
     public static String convertString(String source, String replace, int count) {
@@ -1263,8 +1176,7 @@ public class StringUtils {
     /**
      * 把html中的特殊字符翻译为和显示和输入的一样:原版对应toHtml_all.
      *
-     * @param astr
-     *            String
+     * @param astr String
      * @return String
      */
     public static String str2DefaultTextHtml(String astr) {
@@ -1290,8 +1202,7 @@ public class StringUtils {
     /**
      * 将字节进行 KB MB GB换算
      *
-     * @param size
-     *            字节数
+     * @param size 字节数
      * @return 换算后的字符串
      */
     public static String changeCapacities(long size) {
@@ -1327,7 +1238,6 @@ public class StringUtils {
         }
         return doc;
     }
-
 
 
     public static boolean isInteger(String str) {
@@ -1407,12 +1317,12 @@ public class StringUtils {
     }
 
     /**
-     *  验证移动手机号
+     * 验证移动手机号
      *
      * @param mobile
      * @return 0：非移动手机号；1:是移动号码；2：手机号不完整；
      * @author zhoushijun
-     * @since  2009-12-2
+     * @since 2009-12-2
      */
     public static int checkMobileNumber(String mobile) {
         if (mobile.length() == 11) {
@@ -1421,7 +1331,7 @@ public class StringUtils {
             Matcher isNum = pattern.matcher(mobile);
             if (isNum.matches()) {
                 return 1;
-            }else{
+            } else {
                 return 0;
             }
         } else {
@@ -1440,41 +1350,129 @@ public class StringUtils {
 
     /**
      * 返回url参数的最后一个参数
+     *
      * @param url
      * @return
      */
 
-    public static String getEndOfUrlParams(String url){
+    public static String getEndOfUrlParams(String url) {
         String[] split = url.split("=");
-        return  split[split.length-1];
+        return split[split.length - 1];
     }
 
-    public static String getEndOfNumParams(String url){
+    public static String getEndOfNumParams(String url) {
         String[] split = url.split("-");
         String s = split[split.length - 1];
         return s.split("\\.")[0];
     }
 
-    public static String getPrefixNumberText(String str){
-        assert isNullorBlank(str);
-        Pattern pattern = Pattern.compile("[^\\d]+([\\d]+)[^\\d]+.*");
-        Matcher isNum = pattern.matcher(str);
-        boolean b = isNum.find();
-        String num = null;
-        if(b) {
-            num = isNum.group(1);
+    public static String getPrefixNumberText(String str) {
+        String num = "";
+        try {
+            Pattern pattern = Pattern.compile("[^\\d]+([\\d]+)[^\\d]+.*");
+            Matcher isNum = pattern.matcher(str);
+            boolean b = isNum.find();
+            if (b) {
+                num = isNum.group(1);
+            } else {
+                num = "-1";
+            }
+        } catch (Exception e) {
+            num = "-1";
         }
         return num;
     }
 
+    public static String getNumberText(String str) {
+        if (StringUtils.isBlank(str)) {
+            throw new RuntimeException("参数str不能为空");
+        }
+        StringBuffer number = new StringBuffer("");
+
+        String[] strArray = str.split("");
+        for (String string : strArray) {
+            if (!StringUtils.isBlank(string) && RegUtils.isNumberText(string)) {
+                number.append(string);
+            }
+        }
+        return number.toString();
+    }
+
+    public static int getIntValue(String str) {
+        int r = -1;
+        if (str != null && str.length() != 0) {
+            StringBuffer bf = new StringBuffer();
+            char[] chars = str.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                char c = chars[i];
+                if (c >= '0' && c <= '9') {
+                    bf.append(c);
+                } else if (c == ',') {
+                    continue;
+                } else {
+                    if (bf.length() != 0) {
+                        break;
+                    }
+                }
+            }
+            try {
+                r = Integer.parseInt(bf.toString());
+            } catch (Exception e) {
+                r = -1;
+            }
+        }
+        return r;
+    }
+
+    public static double getDoubleValue(String str) {
+        double d = -1;
+        if (str != null && str.length() != 0) {
+            StringBuffer bf = new StringBuffer();
+            char[] chars = str.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                char c = chars[i];
+                if (c >= '0' && c <= '9') {
+                    bf.append(c);
+                } else if (c == '.') {
+                    if (bf.length() == 0) {
+                        continue;
+                    } else if (bf.indexOf(".") != -1) {
+                        break;
+                    } else {
+                        bf.append(c);
+                    }
+                } else {
+                    if (bf.length() != 0) {
+                        break;
+                    }
+                }
+            }
+            try {
+                d = Double.parseDouble(bf.toString());
+            } catch (Exception e) {
+                d = -1;
+            }
+        }
+
+        return d;
+    }
 
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
 
         String url = "https://liansai.500.com/team/4285/teamlineup";
         String[] split1 = url.split("/");
         String s2 = split1[split1.length - 2];
         System.out.println(s2);
+
+        String sheng = "";
+        int prefixNumberText = getIntValue(sheng);
+        System.out.println(prefixNumberText);
+        String doubleString = "se";
+        String doubleString2 = "";
+        double doubleValue = getDoubleValue(doubleString);
+        double doubleValue1 = getDoubleValue(doubleString2);
+
         /*String s1 = getPrefixNumberText("双方近次交战，横滨，进10球，失6球，大球3次，小球3次");
         String s = "双方近次交战，横滨，进10球，失6球，大球3次，小球3次";
         String[] split = s.split("，");
@@ -1494,5 +1492,12 @@ public class StringUtils {
             find_result = m.group(1);
         }
         System.out.println(find_result);*/
+        String start = "2020-01-02";
+        String end = "2020-01-09";
+        double v = -1 / 100.0;
+        Date startDate = DateUtils.strToDate(start, "yyyy-MM-dd");
+        Date endDate = DateUtils.strToDate(end, "yyyy-MM-dd");
+        Integer intevalDays = DateUtils.getIntevalDays(startDate, endDate);
+        System.out.println(intevalDays);
     }
 }

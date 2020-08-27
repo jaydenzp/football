@@ -12,7 +12,9 @@ public interface TeamService {
 
     Team create(Team team);
 
-    List<Team> findGames(Team team);
+    List<Team> findAll(Team team);
 
-    Team findById(String id);
+    Team findById(Long id);
+
+    List<Team> saveAll(List<Team> teams);
 }

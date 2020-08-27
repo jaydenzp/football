@@ -9,12 +9,14 @@ import java.util.List;
  * @Author: zhanpeng
  * @Date: 2020/7/22 11:02
  */
-public interface GameService extends BaseService<Game> {
+public interface GameService {
 
     Game create(Game game);
 
     List<Game> findAll(Game game);
 
     Game findById(String id);
+
+    List<Game> saveAll(List<Game> games);
 
 }
